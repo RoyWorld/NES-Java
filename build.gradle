@@ -1,0 +1,64 @@
+group 'NES'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task createJavaFile() {
+
+    file("src/main/java/com/nes").mkdirs()
+
+//    file('src/main/java/com/trasher/package-info.java').createNewFile()
+
+
+    file("src/test/java/com/nes").mkdirs()
+
+//    file('src/test/java/com/trasher/package-info.java').createNewFile()
+}
+
+task createJavaProject() {
+
+    sourceSets*.java.srcDirs*.each{ mkdir(it.path) }
+
+    sourceSets*.resources.srcDirs*.each{ mkdir(it.path) }
+
+    file('readme.md').createNewFile()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
+    compile group: 'org.lwjgl', name: 'lwjgl', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-bgfx', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-egl', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-glfw', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-jawt', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-jemalloc', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-lmdb', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-nanovg', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-nfd', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-nuklear', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-openal', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-opencl', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-opengl', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-opengles', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-ovr', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-par', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-sse', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-stb', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-tinyfd', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-vulkan', version: '3.1.6'
+    compile group: 'org.lwjgl', name: 'lwjgl-xxhash', version: '3.1.6'
+
+    // https://mvnrepository.com/artifact/com.kenai.nbpwr/javax-media-opengl
+//    compile group: 'com.kenai.nbpwr', name: 'javax-media-opengl', version: '1.1.1-201002281504'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
